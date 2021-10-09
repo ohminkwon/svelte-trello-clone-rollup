@@ -5,6 +5,9 @@ import alias from '@rollup/plugin-alias';
 import svelte from 'rollup-plugin-svelte';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
+import globals from 'rollup-plugin-node-globals';
+import builtins from 'rollup-plugin-node-builtins';
+import replace from 'rollup-plugin-replace';
 import css from 'rollup-plugin-css-only';
 import sveltePreprocess from 'svelte-preprocess';
 
@@ -42,6 +45,9 @@ export default {
 	plugins: [
 		svelte({
 			preprocess: sveltePreprocess({
+				scss:{
+					prependData: '@import "./src/scss/main.scss";'
+				},
 				postcss: {
 					plugins:[
 						require('autoprefixer')()
@@ -56,7 +62,11 @@ export default {
 		// we'll extract any component CSS out into
 		// a separate file - better for performance
 		css({ output: 'bundle.css' }),		
-
+		replace({
+			values: {
+				'crypto.randomBytes': 'require("randombytes")'
+			}
+		}),
 		// If you have external dependencies installed from
 		// npm, you'll most likely need these plugins. In
 		// some cases you'll need additional configuration -
@@ -67,6 +77,8 @@ export default {
 			dedupe: ['svelte']
 		}),
 		commonjs(),
+		globals(),
+		builtins(),
 
 		alias({
 			entries: [

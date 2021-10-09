@@ -31,9 +31,10 @@ npm i -D svelte@^3 @rollup/plugin-commonjs@^15 @rollup/plugin-node-resolve@^9
 import sveltePreprocess from 'svelte-preprocess';
 //...
 plugins: [
-		svelte({
-			preprocess: sveltePreprocess(), //해당 위치에 추가
-			compilerOptions: {} //...
+	svelte({
+		preprocess: sveltePreprocess(), //해당 위치에 추가
+		compilerOptions: {} //...
+]
 ```
 
 설정 완료후, 확장툴의 svelte for VS Code의 extension setting에서
