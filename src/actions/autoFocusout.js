@@ -1,8 +1,5 @@
-
 export function autoFocusout(el, focusoustListener){
-  const focusinListener = event=>{
-    event.stopPropagation()
-  }
+  const focusinListener = (e) => e.stopPropagation()  
 
   setTimeout(()=>{
     el.addEventListener('click', focusinListener)

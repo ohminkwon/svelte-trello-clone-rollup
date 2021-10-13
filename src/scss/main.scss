@@ -44,7 +44,7 @@
     }
     // 모든 위험한(danger) 버튼의 글자 뒤에는 !(느낌표)를 붙입니다.
     &::after {
-      content: " !";
+      content: "!";
     }
   }
   &.small {

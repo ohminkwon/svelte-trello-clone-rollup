@@ -9,7 +9,7 @@
 <div class="list">
   <div class="list__inner">
     <div class="list__heading">
-      <ListTitle />
+      <ListTitle {list}/>
       <p>
         {list.cards.length} cards
       </p>
@@ -19,7 +19,7 @@
         <Card />
       {/each}      
     </div>
-    <CreateCard />
+    <CreateCard listId={list.id} />
   </div>
 </div>
 
@@ -32,6 +32,25 @@
     height: 100%;
     box-sizing: border-box;
     margin: 0 4px;
+    line-height: 20px;
+
+    :global(&.sortable-ghost){
+      opacity: .2;
+      position: relative;
+      &::after{
+        content: '';
+        position: absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height: 100%;
+        background: #000;
+        border-radius: 4px;
+      }
+    }
+    :global(&.sortable-chosen){
+      cursor: move;
+    }
     .list__inner{
       display: flex;
       flex-direction: column;
