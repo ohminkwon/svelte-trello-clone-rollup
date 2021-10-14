@@ -1,0 +1,22 @@
+[
+  {
+    "id": "eb0de29fff",
+    "title": "Svelte API",
+    "cards": [
+      {"id": "2d07b8cf6b", "title": "라이프 사이클"}, 
+      {"id": "dbb9c71198", "title": "입력 요소 바인딩"},
+      {"id": "46d591f270", "title": "사용자 입력 핸들링"},
+      {"id": "81ac27de95", "title": "스토어"}
+    ]
+  },
+  {
+    "id": "03948c8dc9",
+    "title": "Trello 클론 코딩",
+    "cards": [
+      {"id": "d8e78e4cb2", "title": "반응성"}, 
+      {"id": "dbb9c71198", "title": "svelte 액션 적용"},
+      {"id": "f955b06c13", "title": "scss 적용 및 전역 모듈 제어"},
+      {"id": "252183a762", "title": "커스텀 스토어 작성"}
+    ]
+  }
+]

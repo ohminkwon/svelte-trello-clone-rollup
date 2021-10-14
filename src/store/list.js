@@ -1,11 +1,13 @@
-import { writable } from "svelte/store";
+import { writable } from 'svelte/store';
 import cryptoRandomString from 'crypto-random-string'
 import _find from 'lodash/find'
 import _remove from 'lodash/remove'
 import _cloneDeep from 'lodash/cloneDeep'
+import example from '~/example.json'
 
 const crypto = () => cryptoRandomString({length: 10})
-const repoLists = JSON.parse(window.localStorage.getItem('lists')) || []
+
+const repoLists = JSON.parse(window.localStorage.getItem('lists')) || example
 
 const _lists = writable(repoLists)
 _lists.subscribe(($lists)=>{

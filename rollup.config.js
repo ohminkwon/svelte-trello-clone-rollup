@@ -3,6 +3,7 @@ import path from 'path';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import alias from '@rollup/plugin-alias';
+import json from '@rollup/plugin-json' 
 import strip from '@rollup/plugin-strip';
 
 import svelte from 'rollup-plugin-svelte';
@@ -83,6 +84,9 @@ export default {
 					]
 				}
 			})
+		}),
+		json({
+			compact: true
 		}),
 		
 		// replace ~ builtins 까지는 다음과 같은 순서대로 작성해야 정상적으로 동작함에 주의합니다!

@@ -14,12 +14,11 @@
   "devDependencies": {
     "@rollup/plugin-alias": "^3.1.1",
     "@rollup/plugin-commonjs": "^15.1.0",
+    "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
     "@rollup/plugin-strip": "^2.0.0",
     "autoprefixer": "^9.8.6",
     "crypto-random-string": "^3.2.0",
-    "eslint": "^8.0.0",
-    "eslint-plugin-svelte3": "^3.2.1",
     "lodash": "^4.17.21",
     "node-sass": "^4.14.1",
     "rollup": "^2.3.4",

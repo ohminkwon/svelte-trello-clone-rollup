@@ -40,7 +40,7 @@ plugins: [
 설정 완료후, 확장툴의 svelte for VS Code의 extension setting에서
 
 Svelte > Language-server:Runtime 항목에 다음과 같이 node 경로를 추가해준다.
-![예시-00](./public/images/example/example-00.png)
+![예시-00](./src/images/example-00.png)
 
 node 경로는 맥의 경우 which node // 윈도우의 경우 where node 를 통해 확인할 수 있다.
 
