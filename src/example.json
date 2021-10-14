@@ -18,5 +18,17 @@
       {"id": "f955b06c13", "title": "scss 적용 및 전역 모듈 제어"},
       {"id": "252183a762", "title": "커스텀 스토어 작성"}
     ]
+  },
+  {
+    "id": "df8b21713a",
+    "title": "라파 스터디 그룹",
+    "cards": [
+      {"id": "2579274816", "title": "OHMIN_KWON"}, 
+      {"id": "e716f5d160", "title": "Be"},
+      {"id": "6568264e11", "title": "KINDNICK"},
+      {"id": "bcf55d929d", "title": "아이티탁"},
+      {"id": "c9ac2d61e5", "title": "이준기"},
+      {"id": "a81302e74e", "title": "장혁재"}
+    ]
   }
 ]
