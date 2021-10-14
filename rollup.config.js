@@ -3,7 +3,7 @@ import path from 'path';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import alias from '@rollup/plugin-alias';
-import json from '@rollup/plugin-json' 
+import json from '@rollup/plugin-json';
 import strip from '@rollup/plugin-strip';
 
 import svelte from 'rollup-plugin-svelte';
