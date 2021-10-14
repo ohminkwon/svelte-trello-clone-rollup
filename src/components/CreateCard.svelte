@@ -1,5 +1,5 @@
 <script>
-  import {tick} from 'svelte'
+  import {tick, createEventDispatcher, onDestroy} from 'svelte'
   import {cards} from '~/store/list'
   import {autoFocusout} from '~/actions/autoFocusout'
 
@@ -8,6 +8,8 @@
   let isEditMode = false
   let title = ''
   let textareaEl
+
+  const dispatch = createEventDispatcher()
 
   function addCard(){
     if(title.trim()){
@@ -21,12 +23,18 @@
   async function onEditMode(){
     isEditMode = true
     title=''
+    dispatch('editMode', true)
     await tick()
     textareaEl && textareaEl.focus()
   }
   function offEditMode(){
     isEditMode = false
+    dispatch('editMode', false)
   }
+
+  onDestroy(()=>{
+    offEditMode()
+  })
 </script>
 
 {#if isEditMode}
@@ -38,7 +46,7 @@
       bind:this={textareaEl}
       placeholder="Enter a title for this list..."
       on:keydown={event=>{
-        event.key === 'Enter' && saveTitle()
+        event.key === 'Enter' && addCard()
         event.key === 'Escape' && offEditMode()
         event.key === 'Esc' && offEditMode()
       }}></textarea>
@@ -63,16 +71,16 @@
   </div>
 {/if}
 
-<style lang ="scss">
-  .add-another-card{
+<style lang="scss">
+  .add-another-card {
     padding: 4px 8px;
     font-size: 14px;
-    color: #5e6c84;
+    color: #5E6C84;
     cursor: pointer;
     border-radius: 4px;
-    &:hover{
-      background: rgba(9, 30, 66, .08);
-      color: #172b4d;
+    &:hover {
+      background: rgba(9, 30, 66, 0.08);
+      color: #172B4D;
     }
   }
 </style>

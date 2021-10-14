@@ -14,17 +14,15 @@ _lists.subscribe(($lists)=>{
 
 export let lists = {
   subscribe: _lists.subscribe,
-
   reorder(payload){
-    const {oldInex, newIndex} = payload
+    const {oldIndex, newIndex} = payload
     _lists.update($lists=>{
-      const clone = _cloneDeep($lists[oldInex])
-      $lists.splice(oldInex, 1)
+      const clone = _cloneDeep($lists[oldIndex])
+      $lists.splice(oldIndex, 1)
       $lists.splice(newIndex, 0, clone)
       return $lists
     })
   },
-
   add(payload){
     const {title} = payload
     _lists.update($lists=>{
@@ -36,7 +34,6 @@ export let lists = {
       return $lists
     })
   },
-
   edit(payload){
     const {listId, title} = payload
     _lists.update($lists =>{      
@@ -44,8 +41,7 @@ export let lists = {
       foundList.title = title
       return $lists
     })
-  },
-  
+  },  
   remove(payload){
     const {listId} = payload
     _lists.update($lists =>{      
@@ -55,7 +51,20 @@ export let lists = {
   }
 }
 
-export const cards = {
+export let cards = {
+  reorder(payload){
+    const {fromListId, toListId, oldIndex, newIndex} = payload
+    _lists.update($lists=>{
+      const fromList = _find($lists, {id: fromListId})
+      const toList = fromListId===toListId
+        ? fromList
+        : _find($lists, {id: toListId})      
+      const clone = _cloneDeep(fromList.cards[oldIndex])
+      fromList.cards.splice(oldIndex, 1)
+      toList.cards.splice(newIndex, 0, clone)
+      return $lists 
+    }) 
+  },
   add(payload){
     const {listId, title} = payload
     _lists.update($lists =>{      
@@ -64,6 +73,23 @@ export const cards = {
         id: crypto(),
         title
       })
+      return $lists
+    })
+  },
+  edit(payload){
+    const {listId, cardId, title} = payload
+    _lists.update($lists=>{
+      const foundList = _find($lists, {id: listId})
+      const foundCard = _find(foundList.cards, {id: cardId})
+      foundCard.title = title
+      return $lists
+    })
+  },
+  remove(payload){
+    const {listId, cardId} = payload
+    _lists.update($lists=>{
+      const foundList = _find($lists, {id: listId})
+      _remove(foundList.cards, {id: cardId})
       return $lists
     })
   }

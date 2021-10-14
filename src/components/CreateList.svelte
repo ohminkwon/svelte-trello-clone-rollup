@@ -1,5 +1,5 @@
 <script>
-  import { tick } from 'svelte';
+  import {tick} from 'svelte';
   import {lists} from '~/store/list'
   import {autoFocusout} from '~/actions/autoFocusout'
  
@@ -7,7 +7,7 @@
   let title =''
   let textareaEl
 
-  function addList(params) {
+  function addList() {
     if(title.trim()){
       lists.add({
         title
@@ -20,9 +20,9 @@
     await tick()
     textareaEl && textareaEl.focus()
   }
-  function offEditMode(){
-    isEditMode = false
+  function offEditMode(){    
     title = ''
+    isEditMode = false
   }
 </script>
 
@@ -35,10 +35,11 @@
         bind:value={title}
         bind:this={textareaEl}
         placeholder="Enter a title for this list..."
-        on:keydown={e=>{
-          e.key === 'Enter' && addList()
-          e.key === 'Escape' && offEditMode()
-          e.key === 'Esc' && offEditMode()}}></textarea>
+        on:keydown={event=>{
+          event.key === 'Enter' && addList()
+          event.key === 'Escape' && offEditMode()
+          event.key === 'Esc' && offEditMode()
+        }}></textarea>
       <div class="actions">
         <div 
           class="btn success"
@@ -68,11 +69,11 @@
     font-size: 16px;
     display: inline-block;
     width: 290px;
+    margin: 0 4px;
     padding: 10px 8px;
     vertical-align: top;
     background: rgba(#ebecf0, .6);
     border-radius: 4px;
-    margin: 0 4px;
     line-height: 20px;
     cursor: pointer;
     transition: .2s;
