@@ -129,7 +129,7 @@ export default {
 					replacement: path.resolve(__dirname, 'src/')
 				}
 			]
-		}),
+		}),	
 
 		// 개발 모드에서는 번들이 생성되면 `npm run start`를 호출합니다.
 		!production && serve(),
