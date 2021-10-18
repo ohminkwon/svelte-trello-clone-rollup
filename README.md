@@ -99,3 +99,5 @@ sass와 sass-loader 모듈을 통해 node-sass 모듈 역할을 대체 할 수 �
 npm i -D sass sass-loader
 ```
 
+## Reference
+[Svelte.js Core API 완벽 가이드](https://inf.run/bXbH)
